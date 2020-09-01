@@ -1,12 +1,20 @@
 import React from 'react';
+import {BrowserRouter as Router, Route} from "react-router-dom";
 import './App.css';
 import Home from './components/Home';
+import Google from './components/Google';
+
 
 function App() {
   return (
     <div className="App">
-      <Home />
-      <h1>Main Heading</h1>
+      <Router>
+      {/* <Home /> */}
+      <Route exact path="/" component={Home} />
+      <Route exact path="/google" component={Google} />
+      </Router>
+      
+
     </div>
   );
 }
