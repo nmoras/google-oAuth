@@ -2,6 +2,8 @@ const express = require('express')
 
 const app = express();
 
+require('dotenv').config();
+
 app.use( express.static('my-app/build/') );
 
 const PORT = process.env.PORT || 8080;
