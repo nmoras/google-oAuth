@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express')
 const app = express();
+const mongoose = require('mongoose')
 app.use( express.static('./my-app/build/') );
 const PORT = process.env.PORT || 8080;
 const orm = require( './db/orm.mongoose' );
@@ -26,6 +27,13 @@ app.use(passport.session());
 
 // Auth Routes
 // app.get('/', (req,res) => res.send('you are not loggedin'))
+// const userCheck = (req, res, next) => {
+//     if(!req.user){
+//         res.redirect('/')
+//     } else {
+//         next();
+//     }
+// }
 app.get('/good', (req, res) => res.send(`welcome`))
 app.get('/failed', (req, res) =>{
     res.send('You Failed to log in!')
@@ -46,6 +54,7 @@ app.get('/auth/google/callback',
 passport.authenticate('google', { failureRedirect: '/failed' }),
 function(req, res) {
   // Successful authentication, redirect home.
+//   res.send(req.user)
   res.redirect('/good');
 }       
 );
@@ -57,7 +66,11 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
 })
 
+mongoose.connect(key.mongodb.DB_URI, () => {
+    console.log('connected to mongodb');
+});
 
 app.listen( PORT, function(){
     console.log( `[Google oAuth organizer server] RUNNING, http://localhost:${PORT}` );
  });
+
