@@ -12,7 +12,7 @@ passport.serializeUser(function(user, done) {
     the id of the user to the done callback
     PS: You dont have to do it like this its just usually done like this
     */
-    done(null, user);
+    done(null, user.id);
   });
 
   passport.deserializeUser(function(user, done) {

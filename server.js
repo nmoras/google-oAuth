@@ -22,7 +22,7 @@ app.use(cookieSession({
 
 // Initializes passport and passport sessions
 app.use(passport.initialize());
-// app.use(passport.session());  
+app.use(passport.session());  
 
 // Auth Routes
 // app.get('/', (req,res) => res.send('you are not loggedin'))
