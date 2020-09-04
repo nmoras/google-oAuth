@@ -11,7 +11,7 @@ function App() {
       <Router>
       {/* <Home /> */}
       <Route exact path="/" component={Home} />
-      <Route exact path="/auth/google" component={Google} />
+      {/* <Route exact path="/auth/google" component={Google} /> */}
       </Router>
       
 
